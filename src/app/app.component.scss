@@ -1,0 +1,77 @@
+/* container */
+.container {
+    margin: 20px auto;
+    border: 2px dashed #99ccff;
+    font-size: 13pt;
+    display: table;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  h1,
+  h3 {
+    margin: 5px;
+    color: #01345e;
+    &:nth-child(3) {
+      color: #c1504d;
+      background-color: #d7e4bc;
+    }
+  }
+  
+  /* both tables */
+  div.container table {
+    /*border-collapse: collapse;*/
+    border-collapse: separate;
+    border-spacing: 1px;
+    margin: 7px;
+  }
+  
+  /* toolbox table */
+  .toolbox {
+    margin: 7px 7px 15px 7px;
+    tr,
+    td {
+      background-color: #9398ba;
+    }
+  }
+  
+  /* table cells */
+  td,
+  th {
+    border: 1px solid #01345e;
+    height: 40px;
+    width: 70px;
+    text-align: center;
+    padding: 2px;
+    color: #000000;
+  }
+  
+  tr {
+    &:nth-child(even) {
+      background: #dbe5f1;
+    }
+    &:nth-child(odd) {
+      background: #b8cce4;
+    }
+  }
+  
+  /* button styles */
+  button {
+    margin: 5px 10px;
+    background-color: #01345e;
+    color: white;
+    border-width: 1px;
+    width: 81px;
+    padding: 5px;
+    font-size: 12px;
+  }
+  
+  th[scope='col'] {
+    background: #4e81bd;
+    color: #fff;
+  }
+  
+  th[scope='row'] {
+    background: #5e9980;
+  }
+  

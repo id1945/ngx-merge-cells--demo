@@ -1,5 +1,20 @@
+/**
+ * ************************************
+ * ************************************
+ * Author: DaiDH
+ * Phone: 0845.882.882
+ * Region: VietNam
+ * Github: https://github.com/id1945
+ * Create: 2022
+ * ************************************
+ * ************************************
+ */
+
 import { Injectable } from '@angular/core';
 
+/**
+ * CONFIG_TABLE
+ */
 export const CONFIG_TABLE = {
   tdEvent: false,
   tables: [],
@@ -13,6 +28,11 @@ export const CONFIG_TABLE = {
   selected: [],
 };
 
+/**
+ * getParentCell
+ * @param node 
+ * @return 
+ */
 const getParentCell = (node) => {
   if (!node) {
     return null;
@@ -23,6 +43,14 @@ const getParentCell = (node) => {
   return getParentCell(node.parentNode);
 };
 
+/**
+ * mark
+ * @param flag 
+ * @param el 
+ * @param row 
+ * @param col 
+ * @return 
+ */
 const mark = (flag, el, row = 0, col = 0) => {
   // cell list with new coordinates
   let cl;
@@ -75,6 +103,11 @@ const mark = (flag, el, row = 0, col = 0) => {
   el.ngx_merge_cells.selected = flag;
 };
 
+/**
+ * cellList
+ * @param table 
+ * @return 
+ */
 const cellList = (table) => {
   let matrix = [],
     matrixrow,
@@ -122,13 +155,18 @@ const cellList = (table) => {
   return lookup;
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NgxMergeCellsService {
 
   /**
    * onMouseDown
+   * @param el 
+   * @param flag 
+   * @param type 
    */
-  onMouseDown(el, flag: boolean, type = '') {
+  public onMouseDown(el, flag: boolean, type = ''): void {
     let td, // collection of table cells within container
       th, // collection of table header cells within container
       i,
@@ -203,7 +241,12 @@ export class NgxMergeCellsService {
     this.cellIndex();
   }
 
-  cellInit(c) {
+  /**
+   * cellInit
+   * @param c 
+   * @return any
+   */
+  public cellInit(c): any {
     // if cell contains "ignore" class name then ignore this table cell
     if (c.className.indexOf('ignore') > -1) {
       return;
@@ -216,7 +259,11 @@ export class NgxMergeCellsService {
     }
   }
 
-  cellIgnore(c) {
+  /**
+   * cellIgnore
+   * @param c 
+   */
+  public cellIgnore(c): void {
     // if input parameter is string then overwrite it with cell reference
     if (typeof c === 'string') {
       c = document.getElementById(c);
@@ -225,7 +272,12 @@ export class NgxMergeCellsService {
     this.eventRemove(c, 'mousedown', this.handlerOnMouseDown);
   }
 
-  handlerOnMouseDown(e) {
+  /**
+   * handlerOnMouseDown
+   * @param e 
+   * @return any
+   */
+  public handlerOnMouseDown(e): any {
     let evt = e || window.event,
       td = getParentCell(evt.target || evt.srcElement),
       mouseButton,
@@ -263,7 +315,13 @@ export class NgxMergeCellsService {
     }
   }
 
-  merge(mode: string, clear: boolean, table: string) {
+  /**
+   * merge
+   * @param mode 
+   * @param clear 
+   * @param table 
+   */
+  public merge(mode: string, clear: boolean, table: string): void {
     let tbl, // table array (loaded from tables array or from table input parameter)
       tr, // row reference in table
       c, // current cell
@@ -352,7 +410,16 @@ export class NgxMergeCellsService {
     this.cellIndex();
   }
 
-  mergeCells(cl, idx, pos1, pos2, mode, clear) {
+  /**
+   * mergeCells
+   * @param cl 
+   * @param idx 
+   * @param pos1 
+   * @param pos2 
+   * @param mode 
+   * @param clear 
+   */
+  public mergeCells(cl, idx, pos1, pos2, mode, clear): void {
     let span = 0, // set initial span value to 0
       id, // cell id in format "1-2", "1-4" ...
       fc, // reference of first cell in sequence
@@ -392,7 +459,12 @@ export class NgxMergeCellsService {
     }
   }
 
-  maxCols(table) {
+  /**
+   * maxCols
+   * @param table 
+   * @return number
+   */
+  public maxCols(table: any): number {
     let tr = table.rows, // define number of rows in current table
       span, // sum of colSpan values
       max = 0; // maximum number of columns
@@ -417,7 +489,12 @@ export class NgxMergeCellsService {
     return max;
   }
 
-  split(mode: string, table: string) {
+  /**
+   * split
+   * @param mode 
+   * @param table 
+   */
+  public split(mode: string, table: string): void {
     let tbl, // table array (loaded from tables array or from table input parameter)
       tr, // row reference in table
       c, // current table cell
@@ -520,7 +597,12 @@ export class NgxMergeCellsService {
     this.cellIndex();
   }
 
-  getTable(table) {
+  /**
+   * getTable
+   * @param table 
+   * @return any[]
+   */
+  public getTable(table: any): any[] {
     // define output array
     let tbl = [];
     // input parameter should exits
@@ -538,7 +620,14 @@ export class NgxMergeCellsService {
     return tbl;
   }
 
-  row(table: any, mode: string, index: number) {
+  /**
+   * row
+   * @param table 
+   * @param mode 
+   * @param index 
+   * @return any
+   */
+  public row(table: any, mode: string, index: number): any {
     let nc, // new cell
       nr = null, // new row
       fr, // reference of first row
@@ -620,7 +709,14 @@ export class NgxMergeCellsService {
     return nr;
   }
 
-  column(table: any, mode: string, index: number) {
+  /**
+   * column
+   * @param table 
+   * @param mode 
+   * @param index 
+   * @return any
+   */
+  public column(table: any, mode: string, index: number): any {
     let c, // current cell
       idx, // cell index needed when column is deleted
       nc, // new cell
@@ -684,7 +780,10 @@ export class NgxMergeCellsService {
     }
   }
 
-  removeSelection() {
+  /**
+   * removeSelection
+   */
+  public removeSelection(): void {
     // remove text selection (Chrome, FF, Opera, Safari)
     if (window.getSelection) {
       window.getSelection().removeAllRanges();
@@ -699,7 +798,13 @@ export class NgxMergeCellsService {
     // }
   }
 
-  relocate(from, to) {
+  /**
+   * relocate
+   * @param from 
+   * @param to 
+   * @return any
+   */
+  public relocate(from, to): any {
     let cn; // number of child nodes
     // test if "from" cell is equal to "to" cell then do nothing
     if (from === to) {
@@ -721,7 +826,10 @@ export class NgxMergeCellsService {
     }
   }
 
-  cellIndex() {
+  /**
+   * cellIndex
+   */
+  public cellIndex(): void {
     if (CONFIG_TABLE.showIndex) {
       // variable declaration
       let tr, // number of rows in a table
@@ -753,7 +861,11 @@ export class NgxMergeCellsService {
     }
   }
 
-  updateStyles(styles: Object) {
+  /**
+   * updateStyles
+   * @param styles 
+   */
+  public updateStyles(styles: Object): void {
     CONFIG_TABLE.selected.forEach((f) => {
       Object.keys(styles).forEach((key) => {
         f.style[key] = styles[key];
@@ -761,7 +873,13 @@ export class NgxMergeCellsService {
     });
   }
 
-  eventAdd(obj, eventName, handler) {
+  /**
+   * eventAdd
+   * @param obj 
+   * @param eventName 
+   * @param handler 
+   */
+  public eventAdd(obj, eventName, handler): void {
     if (obj.addEventListener) {
       // (false) register event in bubble phase (event propagates from from target element up to the DOM root)
       obj.addEventListener(eventName, handler, false);
@@ -772,8 +890,13 @@ export class NgxMergeCellsService {
     }
   }
 
-  // remove event listener
-  eventRemove(obj, eventName, handler) {
+  /**
+   * eventRemove
+   * @param obj 
+   * @param eventName 
+   * @param handler 
+   */
+  public eventRemove(obj, eventName, handler): void {
     if (obj.removeEventListener) {
       obj.removeEventListener(eventName, handler, false);
     } else if (obj.detachEvent) {

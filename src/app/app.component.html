@@ -1,69 +1,29 @@
 <!-- container -->
-<div id="myContainer">
-  <h1>{{name}}</h1>
+<div class="container">
+  <h1>{{ name }}</h1>
+  <h3>Author: DaiDH</h3>
+  <h3>npm i ngx-merge-cells --save</h3>
   <!-- toolbox -->
-  <table id="toolbox">
+  <table class="toolbox">
     <tbody>
       <tr>
         <td>
-          <input
-            type="button"
-            value="Merge"
-            class="button"
-            (click)="merge('mainTable')"
-            title="Merge marked table cells horizontally and verically"
-          />
+          <button (click)="merge('mainTable')" title="Merge marked table cells horizontally and verically">Merge</button>
         </td>
         <td>
-          <input
-            type="button"
-            value="Split H"
-            class="button"
-            (click)="split('h', 'mainTable')"
-            title="Split marked table cell horizontally"
-          />
-          <input
-            type="button"
-            value="Split V"
-            class="button"
-            (click)="split('v', 'mainTable')"
-            title="Split marked table cell vertically"
-          />
+          <button (click)="split('h', 'mainTable')" title="Split marked table cell horizontally">Split H</button>
+          <button (click)="split('v', 'mainTable')" title="Split marked table cell vertically">Split V</button>
         </td>
         <td>
-          <input
-            type="button"
-            value="Row +"
-            class="button"
-            (click)="row('insert', 'mainTable')"
-            title="Add table row"
-          />
-          <input
-            type="button"
-            value="Row -"
-            class="button"
-            (click)="row('delete', 'mainTable')"
-            title="Delete table row"
-          />
+          <button (click)="row('insert', 'mainTable')" title="Add table row">Row +</button>
+          <button (click)="row('delete', 'mainTable')" title="Delete table row">Row -</button>
         </td>
         <td>
-          <input
-            type="button"
-            value="Col +"
-            class="button"
-            (click)="column('insert', 'mainTable')"
-            title="Add table column"
-          />
-          <input
-            type="button"
-            value="Col -"
-            class="button"
-            (click)="column('delete', 'mainTable')"
-            title="Delete table column"
-          />
+          <button (click)="column('insert', 'mainTable')" title="Add table column">Col +</button>
+          <button (click)="column('delete', 'mainTable')" title="Delete table column">Col -</button>
         </td>
         <td>
-          <button (click)="updateStyles()" class="button">Update styles</button>    
+          <button class="btn btn-danger mx-1" (click)="updateStyles()" title="Delete table column">Update styles</button>
         </td>
       </tr>
     </tbody>

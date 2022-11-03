@@ -10,7 +10,7 @@ import { NgxMergeCellsService, CONFIG_TABLE } from './ngx-merge-cells.service';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements AfterContentInit {
@@ -31,7 +31,7 @@ export class AppComponent implements AfterContentInit {
   // initialization
   init() {
     // define background color for marked cell
-    CONFIG_TABLE.showIndex = false;
+    CONFIG_TABLE.showIndex = true;
     // activate onmousedown event listener on cells within table with id="mainTable"
     this.ngxMergeCellsService.onMouseDown('mainTable', true);
     // show cellIndex (it is nice for debugging)
