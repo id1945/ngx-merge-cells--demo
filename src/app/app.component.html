@@ -1,0 +1,130 @@
+<!-- container -->
+<div id="myContainer">
+  <h1>{{name}}</h1>
+  <!-- toolbox -->
+  <table id="toolbox">
+    <tbody>
+      <tr>
+        <td>
+          <input
+            type="button"
+            value="Merge"
+            class="button"
+            (click)="merge('mainTable')"
+            title="Merge marked table cells horizontally and verically"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="Split H"
+            class="button"
+            (click)="split('h', 'mainTable')"
+            title="Split marked table cell horizontally"
+          />
+          <input
+            type="button"
+            value="Split V"
+            class="button"
+            (click)="split('v', 'mainTable')"
+            title="Split marked table cell vertically"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="Row +"
+            class="button"
+            (click)="row('insert', 'mainTable')"
+            title="Add table row"
+          />
+          <input
+            type="button"
+            value="Row -"
+            class="button"
+            (click)="row('delete', 'mainTable')"
+            title="Delete table row"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="Col +"
+            class="button"
+            (click)="column('insert', 'mainTable')"
+            title="Add table column"
+          />
+          <input
+            type="button"
+            value="Col -"
+            class="button"
+            (click)="column('delete', 'mainTable')"
+            title="Delete table column"
+          />
+        </td>
+        <td>
+          <button (click)="updateStyles()" class="button">Update styles</button>    
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- main table -->
+  <table id="mainTable" class="table" border="1">
+    <tbody>
+      <tr>
+        <th scope="col">H1</th>
+        <th scope="col">H2</th>
+        <th scope="col">H3</th>
+        <th scope="col">H4</th>
+        <th scope="col">H5</th>
+        <th scope="col">H6</th>
+        <th scope="col">H7</th>
+      </tr>
+      <tr>
+        <th scope="row">H2</th>
+        <td>DEMO2</td>
+        <td>DEMO3</td>
+        <td>DEMO4</td>
+        <td>DEMO5</td>
+        <td>DEMO6</td>
+        <td>DEMO7</td>
+      </tr>
+      <tr>
+        <th scope="row">H3</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">H4</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">H5</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">H6</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
